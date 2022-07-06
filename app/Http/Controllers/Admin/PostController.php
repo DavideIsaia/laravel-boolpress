@@ -39,6 +39,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        $post = new Post();
     }
 
     /**
@@ -49,7 +50,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return view('admin.posts.show', compact('post'));
     }
 
     /**
