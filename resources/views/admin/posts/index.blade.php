@@ -8,7 +8,7 @@
       <div class="card mb-4">
         <div class="card-body">
           <h5 class="card-title">{{ $post->title }}</h5>
-          <a href="" class="btn btn-primary">Dettagli post</a>
+          <a href="{{ route('admin.posts.show', ['post' =>$post->id]) }}" class="btn btn-primary">Dettagli post</a>
         </div>
       </div>
     </div>      
