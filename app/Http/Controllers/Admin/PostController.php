@@ -40,6 +40,12 @@ class PostController extends Controller
     {
         $data = $request->all();
         $post = new Post();
+        $post->fill($data);
+
+        $post->slug = $this->generateSlugFromTitle($post->title);
+        $post->save();
+
+        return redirect()->route('admin.posts.show', ['post' => $post->id]);
     }
 
     /**
@@ -86,5 +92,18 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function generateSlugFromTitle($title) {
+        $base_slug = Str::slug($title, '-');
+        $slug = $base_slug;
+        $i = 1;
+        $post_same_name = Post::where('slug', '=', $slug)->first();
+        while ($post_same_name) {
+            $slug = $base_slug . '-' . $i;
+            $post_same_name = Post::where('slug', '=', $slug)->first();
+            $i++;
+        }
+        return $slug;
     }
 }

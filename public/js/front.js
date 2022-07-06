@@ -1968,7 +1968,7 @@ var staticRenderFns = [function () {
     staticClass: "card-header"
   }, [_vm._v(" Work in progress")]), _vm._v(" "), _c("div", {
     staticClass: "card-body"
-  }, [_vm._v("\n                        I'm an example component.\n                    ")])])])])]);
+  }, [_vm._v("\n                        Il sito aprirà a breve! se sei un content creator, aggiungi "), _c("strong", [_vm._v("/admin")]), _vm._v(" alla barra degli indirizzi ed entra con le tue credenziali.\n                    ")])])])])]);
 }];
 render._withStripped = true;
 
