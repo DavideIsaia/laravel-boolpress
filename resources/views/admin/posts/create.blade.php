@@ -24,7 +24,7 @@
 
   <div class="form-group">
     <label for="content">Contenuto</label>
-    <textarea type="text" class="form-control" name="content" id="content"> {{ old('content') }} </textarea>
+    <textarea type="text" class="form-control" name="content" id="content" rows='10'> {{ old('content') }} </textarea>
   </div>
 
   <button type="submit" class="btn btn-primary">Crea</button>
