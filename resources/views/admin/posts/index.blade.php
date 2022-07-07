@@ -8,11 +8,13 @@
       <div class="card mb-4">
         <div class="card-body">
           <h5 class="card-title">{{ $post->title }}</h5>
+          @if (isset($post->category->name))
+            <h5 class="text-muted">{{ $post->category->name }}</h5>
+          @endif
           <a href="{{ route('admin.posts.show', ['post' =>$post->id]) }}" class="btn btn-primary">Dettagli post</a>
         </div>
       </div>
     </div>      
   @endforeach
-</div>
-    
+</div>    
 @endsection
