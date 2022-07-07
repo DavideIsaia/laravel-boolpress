@@ -1,6 +1,8 @@
 <?php
 
+use App\Category;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class CategoriesTableSeeder extends Seeder
 {
@@ -11,6 +13,19 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $categories = [
+            'antipasti',
+            'primi piatti',
+            'secondi piatti',
+            'contorni',
+            'dessert'
+        ];
+
+        foreach ($categories as $category) {
+            $new_category = new Category();
+            $new_category->name = $category;
+            $new_category->slug = Str::slug($category, '-');
+            $new_category->save();            
+        }
     }
 }
