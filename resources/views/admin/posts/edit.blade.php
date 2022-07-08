@@ -33,8 +33,24 @@
   </div>
 
   <div class="form-group">
-      <label for="content">Contenuto</label>
-      <textarea type="text" class="form-control" id="content" name='content' rows='10'>{{ old('content') ? old('content') : $post->content }}</textarea>
+    <h5>Tags</h5>
+    @foreach ($tags as $tag)
+      <div class="form-check d-inline-block mx-3">    
+        <input name="tags[]"
+               class="form-check-input" 
+               type="checkbox" 
+               value="{{ $tag->id }}"
+               id="tag-{{ $tag->id }}" {{ ($post->tags->contains($tag) || in_array($tag->id, old('tags', []))) ? 'checked' : '' }}>
+        <label class="form-check-label" for="tag-{{ $tag->id }}">
+          {{ $tag->name }}
+        </label>
+      </div>
+    @endforeach
+  </div>
+
+  <div class="form-group">
+    <label for="content">Contenuto</label>
+    <textarea type="text" class="form-control" id="content" name='content' rows='10'>{{ old('content') ? old('content') : $post->content }}</textarea>
   </div>
   <button type="submit" class="btn btn-primary">Conferma Modifiche</button>
 </form>

@@ -46,7 +46,7 @@
         </label>
       </div>
     @endforeach
-</div>
+  </div>
 
   <div class="form-group">
     <label for="content">Contenuto</label>
