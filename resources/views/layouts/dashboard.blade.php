@@ -58,6 +58,18 @@
                                 Crea nuovo post
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ route('admin.categories.index') }}">
+                                <i class="fa-solid fa-folder-tree"></i>
+                                Categorie
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="">
+                                <i class="fa-solid fa-tags"></i>
+                                Tags
+                            </a>
+                        </li>
                     </ul>
 
                 </div>
