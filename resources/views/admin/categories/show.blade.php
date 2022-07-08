@@ -2,7 +2,7 @@
 
 @section('content')
 <h1>{{ $category->name }}</h1>
-<h3 class="text-muted">{{ $category->slug }}</h3>
+<h5 class="text-muted">Slug: {{ $category->slug }}</h5>
 <div class="row row-cols-4">
   @forelse ($category->posts as $post)
     <div class="col">

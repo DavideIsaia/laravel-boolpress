@@ -4,6 +4,14 @@
 <h2>{{ $post->title }}</h2>
 <h5 class="text-muted">Slug : {{ $post->slug }}</h5>
 <h5>Categoria: {{ $category ? $category->name : 'Nessuna' }}</h5>
+<h6>
+  Tags: 
+  @forelse ($post->tags as $tag)
+    {{ $tag->name }}{{ $loop->last ? '' : ', ' }}      
+  @empty
+      nessun tag associato
+  @endforelse
+</h6>
 <p>{{ $post->content }}</p>
 
 <a href="{{ route('admin.posts.edit', ['post' => $post->id])}}" class="btn btn-primary">Modifica</a>
