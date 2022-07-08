@@ -33,6 +33,22 @@
   </div>
 
   <div class="form-group">
+    <h5>Tags</h5>
+    @foreach ($tags as $tag)
+      <div class="form-check d-inline-block mx-3">
+        <input name="tags[]" 
+               class="form-check-input" 
+               type="checkbox" 
+               value="{{ $tag->id }}" 
+               id="tag-{{ $tag->id }}" {{ in_array( $tag->id, old('tags', [])) ? 'checked' : '' }}>
+        <label class="form-check-label" for="tag-{{ $tag->id }}">
+          {{ $tag->name }}
+        </label>
+      </div>
+    @endforeach
+</div>
+
+  <div class="form-group">
     <label for="content">Contenuto</label>
     <textarea type="text" class="form-control" name="content" id="content" rows='10'> {{ old('content') }} </textarea>
   </div>

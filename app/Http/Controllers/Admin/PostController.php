@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Category;
+use App\Post;
+use App\Tag;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Post;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -29,7 +30,8 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('admin.posts.create', compact('categories'));
+        $tags = Tag::all();
+        return view('admin.posts.create', compact('categories', 'tags'));
     }
 
     /**
@@ -47,6 +49,8 @@ class PostController extends Controller
 
         $post->slug = $this->generateSlugFromTitle($post->title);
         $post->save();
+
+        $post->tags()->sync($data['tags']);
 
         return redirect()->route('admin.posts.show', ['post' => $post->id]);
     }
@@ -128,7 +132,8 @@ class PostController extends Controller
         return [
             'title' => 'required|max:255',
             'content' => 'required|max:30000',
-            'category_id' => 'nullable|exists:categories,id'
+            'category_id' => 'nullable|exists:categories,id',
+            'tags' => 'exists:tags,id'
         ];
     }
 }
