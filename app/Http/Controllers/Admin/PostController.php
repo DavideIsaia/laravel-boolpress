@@ -50,8 +50,10 @@ class PostController extends Controller
         $post->slug = $this->generateSlugFromTitle($post->title);
         $post->save();
 
-        $post->tags()->sync($data['tags']);
-
+        if (isset($data['tags'])) {
+            $post->tags()->sync($data['tags']);
+        }
+        
         return redirect()->route('admin.posts.show', ['post' => $post->id]);
     }
 
@@ -100,7 +102,12 @@ class PostController extends Controller
         $post->slug = $this->generateSlugFromTitle($post->title);
         $post->save();
 
-        $post->tags()->sync($data['tags']);
+        if (isset($data['tags'])) {
+            $post->tags()->sync($data['tags']);
+        } else {
+            $post->tags()->sync([]);
+        }
+        
 
         return redirect()->route('admin.posts.show', ['post' => $post->id]);
     }
