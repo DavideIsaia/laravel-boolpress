@@ -8,7 +8,7 @@
       <div class="card mb-4">
         <div class="card-body">
           <h5 class="card-title">{{ $category->name }}</h5>
-          <a href="{{ route('admin.categories.show', ['slug' =>$category->slug]) }}" class="btn btn-primary">Visualizza tutti i post corrispondenti</a>
+          <a href="{{ route('admin.categories.show', ['slug' => $category->slug]) }}" class="btn btn-primary">Visualizza tutti i post corrispondenti</a>
         </div>
       </div>
     </div>      

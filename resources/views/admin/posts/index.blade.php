@@ -11,7 +11,7 @@
           @if (isset($post->category->name))
             <h5 class="text-muted">{{ $post->category->name }}</h5>
           @endif
-          <a href="{{ route('admin.posts.show', ['post' =>$post->id]) }}" class="btn btn-primary">Dettagli post</a>
+          <a href="{{ route('admin.posts.show', ['slug' =>$post->slug]) }}" class="btn btn-primary">Dettagli post</a>
         </div>
       </div>
     </div>      
