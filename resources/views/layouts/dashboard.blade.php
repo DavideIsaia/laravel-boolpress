@@ -65,7 +65,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="">
+                            <a class="nav-link active" href="{{ route('admin.tags.index') }}">
                                 <i class="fa-solid fa-tags"></i>
                                 Tags
                             </a>

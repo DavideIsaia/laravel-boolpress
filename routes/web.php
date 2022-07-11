@@ -31,8 +31,8 @@ Route::middleware('auth')
         Route::get('categories', 'CategoryController@index')->name('categories.index');
         Route::get('categories/{slug}', 'CategoryController@show')->name('categories.show');
 
-        Route::get('tags', 'CategoryController@index')->name('tags.index');
-        Route::get('tags/{slug}', 'CategoryController@show')->name('tags.show');
+        Route::get('tags', 'TagController@index')->name('tags.index');
+        Route::get('tags/{slug}', 'TagController@show')->name('tags.show');
     });
 
 Route::get('{any?}', function() {

@@ -1,4 +1,4 @@
-{{-- @extends('layouts.dashboard')
+@extends('layouts.dashboard')
 
 @section('content')
 <h1>Elenco dei tags</h1>
@@ -15,4 +15,4 @@
   @endforeach
 </div>    
     
-@endsection --}}
+@endsection

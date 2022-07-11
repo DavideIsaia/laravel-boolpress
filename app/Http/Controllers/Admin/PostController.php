@@ -68,7 +68,8 @@ class PostController extends Controller
         $post = Post::where('slug', '=', $slug)->first();
 
         $category = $post->category;
-        return view('admin.posts.show', compact('post', 'category'));
+        $tag = $post->tag;
+        return view('admin.posts.show', compact('post', 'category', 'tag'));
     }
 
     /**

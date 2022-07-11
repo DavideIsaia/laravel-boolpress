@@ -1,4 +1,4 @@
-{{-- @extends('layouts.dashboard')
+@extends('layouts.dashboard')
 
 @section('content')
 <h1>{{ $tag->name }}</h1>
@@ -24,4 +24,4 @@
   @endforelse
 </div>
     
-@endsection --}}
+@endsection
