@@ -1,27 +1,70 @@
 <template>
     <div class="container">
+        <!-- info work in progress -->
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="alert alert-info mt-3 mb-3">
+                <div class="alert alert-info mt-3 mb-5">
                     INFO <hr>
                     Il sito aprirà a breve! se sei un content creator, aggiungi <strong>/admin</strong> alla barra degli indirizzi ed entra con le tue credenziali.
                 </div>
             </div>
         </div>
-        <h1>Front Office | Lista dei post</h1>
+        <!-- main content -->
+        <h1>Lista dei post | Totale: {{ totalPosts }}</h1>
         <div class="row row-cols-4">
             <div class="col"
                 v-for="post in posts"
                 :key="post.id"            
             >
-                <div class="card mb-2">
+                <div class="card mt-2 mb-2">
                     <div class="card-body">
                         <h4 class="card-title">{{ post.title }}</h4>
+                        <div class="card-text">
+                            {{ ellipsis(post.content, 100) }}
+                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
+
+        <!-- navigazione pagine -->
+        <nav aria-label="...">
+            <ul class="pagination">
+                <!-- pagina precedente -->
+                <li class="page-item" :class="{ disabled: currentPage === 1 }">
+                    <a @click="getPosts(currentPage - 1)"
+                        class="page-link"
+                        href="#"
+                        tabindex="-1"
+                    >
+                        &larr;
+                    </a>
+                </li>
+
+                <!-- numero pagine -->
+                <li class="page-item" 
+                    v-for="n in lastPage" 
+                    :key="n" 
+                    :class="{ active: currentPage === n }">
+                    <a @click="getPosts(n)" 
+                        class="page-link" 
+                        href="#"
+                    >
+                        {{ n }}
+                    </a>
+                </li>
+
+                <!-- pagina successiva -->
+                <li class="page-item" :class="{ disabled: currentPage === lastPage }">
+                    <a @click="getPosts(currentPage + 1)" 
+                        class="page-link" 
+                        href="#"
+                    >
+                        &rarr;
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </template>
 
@@ -30,18 +73,34 @@ export default {
     name: 'PostsList',
     data() {
         return {
-            posts: []
+            posts: [],
+            totalPosts: 0,
+            currentPage: 1,
+            lastPage: 1
         }
     },
     created() {
-        this.getPosts();
+        this.getPosts(1);
     },
     methods: {
-        getPosts() {
-            axios.get("/api/posts")
+        getPosts(pageNumber) {
+            axios.get("/api/posts", {
+                params: {
+                    page: pageNumber,
+                },
+            })
                 .then((resp) => {
-                    this.posts = resp.data.results
-                })
+                    this.posts = resp.data.results.data;
+                    this.totalPosts = resp.data.results.total;
+                    this.currentPage = resp.data.results.current_page;
+                    this.lastPage = resp.data.results.last_page;
+                });
+        },
+        ellipsis(text, maxChar) {
+            if (text.length > maxChar) {
+                return text.substr(0, maxChar) + ' ...';
+            }
+            return text;
         }
     },
 }

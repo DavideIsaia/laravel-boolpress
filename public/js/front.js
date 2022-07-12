@@ -1912,19 +1912,36 @@ __webpack_require__.r(__webpack_exports__);
   name: 'PostsList',
   data: function data() {
     return {
-      posts: []
+      posts: [],
+      totalPosts: 0,
+      currentPage: 1,
+      lastPage: 1
     };
   },
   created: function created() {
-    this.getPosts();
+    this.getPosts(1);
   },
   methods: {
-    getPosts: function getPosts() {
+    getPosts: function getPosts(pageNumber) {
       var _this = this;
 
-      axios.get("/api/posts").then(function (resp) {
-        _this.posts = resp.data.results;
+      axios.get("/api/posts", {
+        params: {
+          page: pageNumber
+        }
+      }).then(function (resp) {
+        _this.posts = resp.data.results.data;
+        _this.totalPosts = resp.data.results.total;
+        _this.currentPage = resp.data.results.current_page;
+        _this.lastPage = resp.data.results.last_page;
       });
+    },
+    ellipsis: function ellipsis(text, maxChar) {
+      if (text.length > maxChar) {
+        return text.substr(0, maxChar) + ' ...';
+      }
+
+      return text;
     }
   }
 });
@@ -1968,20 +1985,77 @@ var render = function render() {
 
   return _c("div", {
     staticClass: "container"
-  }, [_vm._m(0), _vm._v(" "), _c("h1", [_vm._v("Front Office | Lista dei post")]), _vm._v(" "), _c("div", {
+  }, [_vm._m(0), _vm._v(" "), _c("h1", [_vm._v("Lista dei post | Totale: " + _vm._s(_vm.totalPosts))]), _vm._v(" "), _c("div", {
     staticClass: "row row-cols-4"
   }, _vm._l(_vm.posts, function (post) {
     return _c("div", {
       key: post.id,
       staticClass: "col"
     }, [_c("div", {
-      staticClass: "card mb-2"
+      staticClass: "card mt-2 mb-2"
     }, [_c("div", {
       staticClass: "card-body"
     }, [_c("h4", {
       staticClass: "card-title"
-    }, [_vm._v(_vm._s(post.title))])])])]);
-  }), 0)]);
+    }, [_vm._v(_vm._s(post.title))]), _vm._v(" "), _c("div", {
+      staticClass: "card-text"
+    }, [_vm._v("\n                            " + _vm._s(_vm.ellipsis(post.content, 100)) + "\n                        ")])])])]);
+  }), 0), _vm._v(" "), _c("nav", {
+    attrs: {
+      "aria-label": "..."
+    }
+  }, [_c("ul", {
+    staticClass: "pagination"
+  }, [_c("li", {
+    staticClass: "page-item",
+    "class": {
+      disabled: _vm.currentPage === 1
+    }
+  }, [_c("a", {
+    staticClass: "page-link",
+    attrs: {
+      href: "#",
+      tabindex: "-1"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.getPosts(_vm.currentPage - 1);
+      }
+    }
+  }, [_vm._v("\n                        ←\n                    ")])]), _vm._v(" "), _vm._l(_vm.lastPage, function (n) {
+    return _c("li", {
+      key: n,
+      staticClass: "page-item",
+      "class": {
+        active: _vm.currentPage === n
+      }
+    }, [_c("a", {
+      staticClass: "page-link",
+      attrs: {
+        href: "#"
+      },
+      on: {
+        click: function click($event) {
+          return _vm.getPosts(n);
+        }
+      }
+    }, [_vm._v("\n                        " + _vm._s(n) + "\n                    ")])]);
+  }), _vm._v(" "), _c("li", {
+    staticClass: "page-item",
+    "class": {
+      disabled: _vm.currentPage === _vm.lastPage
+    }
+  }, [_c("a", {
+    staticClass: "page-link",
+    attrs: {
+      href: "#"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.getPosts(_vm.currentPage + 1);
+      }
+    }
+  }, [_vm._v("\n                        →\n                    ")])])], 2)])]);
 };
 
 var staticRenderFns = [function () {
@@ -1993,7 +2067,7 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "col-md-8"
   }, [_c("div", {
-    staticClass: "alert alert-info mt-3 mb-3"
+    staticClass: "alert alert-info mt-3 mb-5"
   }, [_vm._v("\n                    INFO "), _c("hr"), _vm._v("\n                    Il sito aprirà a breve! se sei un content creator, aggiungi "), _c("strong", [_vm._v("/admin")]), _vm._v(" alla barra degli indirizzi ed entra con le tue credenziali.\n                ")])])]);
 }];
 render._withStripped = true;
