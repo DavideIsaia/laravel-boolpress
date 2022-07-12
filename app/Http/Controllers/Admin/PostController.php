@@ -54,7 +54,7 @@ class PostController extends Controller
             $post->tags()->sync($data['tags']);
         }
 
-        return redirect()->route('admin.posts.show', ['post' => $post->id]);
+        return redirect()->route('admin.posts.show', ['slug' =>$post->slug]);
     }
 
     /**
@@ -110,7 +110,7 @@ class PostController extends Controller
         }
         
 
-        return redirect()->route('admin.posts.show', ['post' => $post->id]);
+        return redirect()->route('admin.posts.show', ['slug' =>$post->slug]);
     }
 
     /**
