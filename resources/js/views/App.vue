@@ -1,16 +1,15 @@
  <template>
   <div>
-    <h1>Front Office | Home Page</h1>
-    <WorkInProgress />
+    <PostsList />
   </div>
 </template>
 
 <script>
-import WorkInProgress from '../components/WorkInProgress.vue';
+import PostsList from '../components/PostsList.vue';
 export default {
   name: 'App',
   components: {
-    WorkInProgress
+    PostsList
   }
 }
 </script>
