@@ -1,17 +1,18 @@
  <template>
   <div>
-    <PostsList />
+    <Header />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import PostsList from '../components/PostsList.vue';
+import Header from "../components/Header.vue";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    PostsList
+    Header
   }
-}
+};
 </script>
 
 <style>
