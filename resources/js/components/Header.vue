@@ -25,6 +25,9 @@
             <li class="nav-item">
               <router-link class="nav-link" :to="{name: 'about'}">Chi siamo</router-link>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -34,7 +37,7 @@
 
 <script>
 export default {
-  name: "Header",
+  name: "Header"
 };
 </script>
 

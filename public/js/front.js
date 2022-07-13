@@ -2108,7 +2108,7 @@ var render = function render() {
         name: "about"
       }
     }
-  }, [_vm._v("Chi siamo")])], 1)])])])])]);
+  }, [_vm._v("Chi siamo")])], 1), _vm._v(" "), _vm._m(1)])])])])]);
 };
 
 var staticRenderFns = [function () {
@@ -2128,6 +2128,18 @@ var staticRenderFns = [function () {
   }, [_c("span", {
     staticClass: "navbar-toggler-icon"
   })]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("li", {
+    staticClass: "nav-item"
+  }, [_c("a", {
+    staticClass: "nav-link",
+    attrs: {
+      href: "/login"
+    }
+  }, [_vm._v("Login")])]);
 }];
 render._withStripped = true;
 
@@ -2364,9 +2376,7 @@ var staticRenderFns = [function () {
     }
   }), _vm._v(" "), _c("div", {
     staticClass: "title"
-  }, [_c("div", {
-    staticClass: "alert alert-info mt-3 mb-5"
-  }, [_vm._v("\r\n          Benvenuti su Boolpress! "), _c("hr"), _vm._v("\r\n          Se sei un content creator, aggiungi "), _c("strong", [_vm._v("/admin")]), _vm._v(" alla barra degli indirizzi ed entra con le tue credenziali.\r\n      ")])])]);
+  }, [_vm._v("Benvenuti su Boolpress!")])]);
 }];
 render._withStripped = true;
 
@@ -6807,7 +6817,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "img[data-v-b3c5cf30] {\n  width: 100%;\n  height: calc(100vh - 55px);\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.title[data-v-b3c5cf30] {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  max-width: 30%;\n  font-size: 1.8rem;\n}", ""]);
+exports.push([module.i, "img[data-v-b3c5cf30] {\n  width: 100%;\n  height: calc(100vh - 55px);\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.title[data-v-b3c5cf30] {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  max-width: 40%;\n  font-size: 4rem;\n  text-align: center;\n}", ""]);
 
 // exports
 
