@@ -1,6 +1,21 @@
 <template>
     <div class="container">
         <h1 class="mt-4">Lista dei post | Totale: {{ totalPosts }}</h1>
+        <div class="form-group">
+            <label for="elements_in_page"> Elementi in pagina</label>
+            <select @change="getPosts(1)"
+                    class="form-select" 
+                    id="elements_in_page"
+                    v-model="elementsInPage"
+                    >
+                    <option value="4">4</option>
+                    <option value="8">8</option>
+                    <option value="12">12</option>
+                    <option value="16">16</option>
+            </select>
+        </div>
+
+        <!-- elementi inseriti dinamicamente -->
         <div class="row row-cols-4">
             <div class="col"
                 v-for="post in posts"
@@ -65,6 +80,7 @@ export default {
         return {
             posts: [],
             totalPosts: 0,
+            elementsInPage: 4,
             currentPage: 1,
             lastPage: 1
         }
@@ -77,6 +93,7 @@ export default {
             axios.get("/api/posts", {
                 params: {
                     page: pageNumber,
+                    elements_in_page: this.elementsInPage
                 },
             })
                 .then((resp) => {

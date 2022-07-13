@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>Chi siamo</h1>
+    <h1 class="mt-4">Chi siamo</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur fringilla congue varius. Maecenas vulputate nibh et neque interdum, a iaculis dui semper. Praesent est ex, aliquet a turpis et, iaculis pulvinar diam. Sed augue tortor, euismod ut semper at, semper vitae ex. Maecenas id mattis lorem. Nulla tincidunt eleifend tempus. Vivamus tristique nibh mauris, quis eleifend nisi mollis non. Vivamus dolor mi, tristique sit amet pharetra in, dictum in tellus.</p>
 
     <p>In at imperdiet est. Suspendisse fringilla egestas mollis. Phasellus mattis sit amet mauris et aliquam. Maecenas vitae lacus quis purus efficitur pretium. Nam at tellus ac risus fringilla gravida. Aliquam at nulla auctor, porta justo nec, ornare quam. Aliquam pharetra odio eget sagittis semper. Nulla pretium elit nulla, vitae sollicitudin nibh laoreet vestibulum.</p>

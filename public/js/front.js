@@ -1929,6 +1929,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       posts: [],
       totalPosts: 0,
+      elementsInPage: 4,
       currentPage: 1,
       lastPage: 1
     };
@@ -1942,7 +1943,8 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/api/posts", {
         params: {
-          page: pageNumber
+          page: pageNumber,
+          elements_in_page: this.elementsInPage
         }
       }).then(function (resp) {
         _this.posts = resp.data.results.data;
@@ -2152,6 +2154,52 @@ var render = function render() {
   }, [_c("h1", {
     staticClass: "mt-4"
   }, [_vm._v("Lista dei post | Totale: " + _vm._s(_vm.totalPosts))]), _vm._v(" "), _c("div", {
+    staticClass: "form-group"
+  }, [_c("label", {
+    attrs: {
+      "for": "elements_in_page"
+    }
+  }, [_vm._v(" Elementi in pagina")]), _vm._v(" "), _c("select", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.elementsInPage,
+      expression: "elementsInPage"
+    }],
+    staticClass: "form-select",
+    attrs: {
+      id: "elements_in_page"
+    },
+    on: {
+      change: [function ($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.elementsInPage = $event.target.multiple ? $$selectedVal : $$selectedVal[0];
+      }, function ($event) {
+        return _vm.getPosts(1);
+      }]
+    }
+  }, [_c("option", {
+    attrs: {
+      value: "4"
+    }
+  }, [_vm._v("4")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "8"
+    }
+  }, [_vm._v("8")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "12"
+    }
+  }, [_vm._v("12")]), _vm._v(" "), _c("option", {
+    attrs: {
+      value: "16"
+    }
+  }, [_vm._v("16")])])]), _vm._v(" "), _c("div", {
     staticClass: "row row-cols-4"
   }, _vm._l(_vm.posts, function (post) {
     return _c("div", {
@@ -2254,7 +2302,9 @@ var staticRenderFns = [function () {
 
   return _c("div", {
     staticClass: "container"
-  }, [_c("h1", [_vm._v("Chi siamo")]), _vm._v(" "), _c("p", [_vm._v("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur fringilla congue varius. Maecenas vulputate nibh et neque interdum, a iaculis dui semper. Praesent est ex, aliquet a turpis et, iaculis pulvinar diam. Sed augue tortor, euismod ut semper at, semper vitae ex. Maecenas id mattis lorem. Nulla tincidunt eleifend tempus. Vivamus tristique nibh mauris, quis eleifend nisi mollis non. Vivamus dolor mi, tristique sit amet pharetra in, dictum in tellus.")]), _vm._v(" "), _c("p", [_vm._v("In at imperdiet est. Suspendisse fringilla egestas mollis. Phasellus mattis sit amet mauris et aliquam. Maecenas vitae lacus quis purus efficitur pretium. Nam at tellus ac risus fringilla gravida. Aliquam at nulla auctor, porta justo nec, ornare quam. Aliquam pharetra odio eget sagittis semper. Nulla pretium elit nulla, vitae sollicitudin nibh laoreet vestibulum.")]), _vm._v(" "), _c("p", [_vm._v("Nullam tempor, urna sit amet vehicula hendrerit, ex lacus aliquet justo, vel semper felis felis eget lacus. Nam bibendum iaculis finibus. Aliquam consequat magna ac mauris condimentum euismod. Integer in malesuada justo. Integer ultrices leo non augue placerat placerat. Praesent laoreet est ullamcorper, lobortis mauris tincidunt, posuere turpis. Sed mollis, ex a posuere volutpat, lectus tellus gravida sapien, vitae sollicitudin lacus arcu at tortor. Nam fringilla, quam pulvinar viverra luctus, dolor turpis pharetra neque, non ornare urna ante vitae urna. Donec vel massa suscipit, suscipit odio quis, lobortis sem. Fusce in enim tristique, cursus tellus in, condimentum magna. Pellentesque quis neque arcu. Nullam sagittis est nec cursus pellentesque. Cras sagittis, tortor ut hendrerit dapibus, ante augue convallis massa, id viverra lacus nibh vitae nisi. Praesent tincidunt purus mauris, vel condimentum nibh consequat et. Maecenas a eleifend lectus, non hendrerit diam.")]), _vm._v(" "), _c("p", [_vm._v("Phasellus viverra mi et ligula ultrices ultrices. Suspendisse potenti. Mauris at tempor lacus. Praesent bibendum dignissim elit, id mattis risus eleifend sed. Aenean luctus urna sed nibh fermentum lobortis. Sed eget massa semper, dapibus nulla at, aliquam urna. Nunc sed gravida sem. Nulla facilisi. Nunc vitae augue blandit mauris commodo gravida. Nunc a sem eleifend, aliquam lorem ut, consequat turpis. Morbi accumsan imperdiet pulvinar. Fusce felis nunc, ultrices quis posuere et, tincidunt eget nulla.")]), _vm._v(" "), _c("p", [_vm._v("Aenean tincidunt, turpis id tincidunt accumsan, nisi felis ultrices turpis, eu volutpat massa neque eget ligula. Aliquam magna erat, vehicula ac rhoncus non, accumsan nec nunc. Nullam pretium lobortis sapien, id ullamcorper neque mattis quis. Duis vehicula euismod mollis. Integer pulvinar purus sit amet risus mattis congue. Ut eget laoreet lectus. Curabitur quis posuere eros. Mauris porttitor iaculis mollis. Aliquam euismod commodo pellentesque. Vivamus ornare mauris nec sem pulvinar posuere. Fusce vel ultrices massa. Aenean vitae aliquet dolor, eu commodo nisl.")])]);
+  }, [_c("h1", {
+    staticClass: "mt-4"
+  }, [_vm._v("Chi siamo")]), _vm._v(" "), _c("p", [_vm._v("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur fringilla congue varius. Maecenas vulputate nibh et neque interdum, a iaculis dui semper. Praesent est ex, aliquet a turpis et, iaculis pulvinar diam. Sed augue tortor, euismod ut semper at, semper vitae ex. Maecenas id mattis lorem. Nulla tincidunt eleifend tempus. Vivamus tristique nibh mauris, quis eleifend nisi mollis non. Vivamus dolor mi, tristique sit amet pharetra in, dictum in tellus.")]), _vm._v(" "), _c("p", [_vm._v("In at imperdiet est. Suspendisse fringilla egestas mollis. Phasellus mattis sit amet mauris et aliquam. Maecenas vitae lacus quis purus efficitur pretium. Nam at tellus ac risus fringilla gravida. Aliquam at nulla auctor, porta justo nec, ornare quam. Aliquam pharetra odio eget sagittis semper. Nulla pretium elit nulla, vitae sollicitudin nibh laoreet vestibulum.")]), _vm._v(" "), _c("p", [_vm._v("Nullam tempor, urna sit amet vehicula hendrerit, ex lacus aliquet justo, vel semper felis felis eget lacus. Nam bibendum iaculis finibus. Aliquam consequat magna ac mauris condimentum euismod. Integer in malesuada justo. Integer ultrices leo non augue placerat placerat. Praesent laoreet est ullamcorper, lobortis mauris tincidunt, posuere turpis. Sed mollis, ex a posuere volutpat, lectus tellus gravida sapien, vitae sollicitudin lacus arcu at tortor. Nam fringilla, quam pulvinar viverra luctus, dolor turpis pharetra neque, non ornare urna ante vitae urna. Donec vel massa suscipit, suscipit odio quis, lobortis sem. Fusce in enim tristique, cursus tellus in, condimentum magna. Pellentesque quis neque arcu. Nullam sagittis est nec cursus pellentesque. Cras sagittis, tortor ut hendrerit dapibus, ante augue convallis massa, id viverra lacus nibh vitae nisi. Praesent tincidunt purus mauris, vel condimentum nibh consequat et. Maecenas a eleifend lectus, non hendrerit diam.")]), _vm._v(" "), _c("p", [_vm._v("Phasellus viverra mi et ligula ultrices ultrices. Suspendisse potenti. Mauris at tempor lacus. Praesent bibendum dignissim elit, id mattis risus eleifend sed. Aenean luctus urna sed nibh fermentum lobortis. Sed eget massa semper, dapibus nulla at, aliquam urna. Nunc sed gravida sem. Nulla facilisi. Nunc vitae augue blandit mauris commodo gravida. Nunc a sem eleifend, aliquam lorem ut, consequat turpis. Morbi accumsan imperdiet pulvinar. Fusce felis nunc, ultrices quis posuere et, tincidunt eget nulla.")]), _vm._v(" "), _c("p", [_vm._v("Aenean tincidunt, turpis id tincidunt accumsan, nisi felis ultrices turpis, eu volutpat massa neque eget ligula. Aliquam magna erat, vehicula ac rhoncus non, accumsan nec nunc. Nullam pretium lobortis sapien, id ullamcorper neque mattis quis. Duis vehicula euismod mollis. Integer pulvinar purus sit amet risus mattis congue. Ut eget laoreet lectus. Curabitur quis posuere eros. Mauris porttitor iaculis mollis. Aliquam euismod commodo pellentesque. Vivamus ornare mauris nec sem pulvinar posuere. Fusce vel ultrices massa. Aenean vitae aliquet dolor, eu commodo nisl.")])]);
 }];
 render._withStripped = true;
 
@@ -2316,7 +2366,7 @@ var staticRenderFns = [function () {
     staticClass: "title"
   }, [_c("div", {
     staticClass: "alert alert-info mt-3 mb-5"
-  }, [_vm._v("\r\n          Benvenuti su Boolpress! "), _c("hr"), _vm._v("\r\n          Il sito aprirà a breve! se sei un content creator, aggiungi "), _c("strong", [_vm._v("/admin")]), _vm._v(" alla barra degli indirizzi ed entra con le tue credenziali.\r\n      ")])])]);
+  }, [_vm._v("\r\n          Benvenuti su Boolpress! "), _c("hr"), _vm._v("\r\n          Se sei un content creator, aggiungi "), _c("strong", [_vm._v("/admin")]), _vm._v(" alla barra degli indirizzi ed entra con le tue credenziali.\r\n      ")])])]);
 }];
 render._withStripped = true;
 

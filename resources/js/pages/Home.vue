@@ -4,7 +4,7 @@
     <div class="title">
       <div class="alert alert-info mt-3 mb-5">
           Benvenuti su Boolpress! <hr>
-          Il sito aprirà a breve! se sei un content creator, aggiungi <strong>/admin</strong> alla barra degli indirizzi ed entra con le tue credenziali.
+          Se sei un content creator, aggiungi <strong>/admin</strong> alla barra degli indirizzi ed entra con le tue credenziali.
       </div>
     </div>
   </div>
