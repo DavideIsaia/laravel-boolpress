@@ -1,16 +1,6 @@
 <template>
     <div class="container">
-        <!-- info work in progress -->
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="alert alert-info mt-3 mb-5">
-                    INFO <hr>
-                    Il sito aprirà a breve! se sei un content creator, aggiungi <strong>/admin</strong> alla barra degli indirizzi ed entra con le tue credenziali.
-                </div>
-            </div>
-        </div>
-        <!-- main content -->
-        <h1>Lista dei post | Totale: {{ totalPosts }}</h1>
+        <h1 class="mt-4">Lista dei post | Totale: {{ totalPosts }}</h1>
         <div class="row row-cols-4">
             <div class="col"
                 v-for="post in posts"
