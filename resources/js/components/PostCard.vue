@@ -4,6 +4,7 @@
       <h4 class="card-title">{{ post.title }}</h4>
       <h6><strong>Categoria: {{ category }}</strong></h6>
       <div class="card-text">{{ ellipsis(100) }}</div>
+      <router-link :to="{ name: 'single-post', params: {slug: post.slug} }" class="card-link">Leggi tutto</router-link>
     </div>
   </div>
 </template>
