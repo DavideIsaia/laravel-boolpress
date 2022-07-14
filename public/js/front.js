@@ -2039,12 +2039,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_Header_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Header.vue */ "./resources/js/components/Header.vue");
+/* harmony import */ var _components_Header_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Header.vue */ "./resources/js/components/Header.vue");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "App",
   components: {
-    Header: _components_Header_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+    Header: _components_Header_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
 });
 
@@ -2223,7 +2223,7 @@ var render = function render() {
       staticClass: "card-body"
     }, [_c("h4", {
       staticClass: "card-title"
-    }, [_vm._v(_vm._s(post.title))]), _vm._v(" "), _c("div", {
+    }, [_vm._v(_vm._s(post.title))]), _vm._v(" "), _c("h6", [_c("strong", [_vm._v("Categoria: " + _vm._s(post.category ? post.category.name : "nessuna"))])]), _vm._v(" "), _c("div", {
       staticClass: "card-text"
     }, [_vm._v("\n                            " + _vm._s(_vm.ellipsis(post.content, 100)) + "\n                        ")])])])]);
   }), 0), _vm._v(" "), _c("nav", {

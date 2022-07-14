@@ -24,6 +24,7 @@
                 <div class="card mt-2 mb-2">
                     <div class="card-body">
                         <h4 class="card-title">{{ post.title }}</h4>
+                        <h6><strong>Categoria: {{ post.category ? post.category.name : "nessuna" }}</strong></h6>
                         <div class="card-text">
                             {{ ellipsis(post.content, 100) }}
                         </div>
