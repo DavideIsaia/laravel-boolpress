@@ -21,15 +21,7 @@
                 v-for="post in posts"
                 :key="post.id"            
             >
-                <div class="card mt-2 mb-2">
-                    <div class="card-body">
-                        <h4 class="card-title">{{ post.title }}</h4>
-                        <h6><strong>Categoria: {{ post.category ? post.category.name : "nessuna" }}</strong></h6>
-                        <div class="card-text">
-                            {{ ellipsis(post.content, 100) }}
-                        </div>
-                    </div>
-                </div>
+                <PostCard :post="post" />
             </div>
         </div>
 
@@ -75,8 +67,12 @@
 </template>
 
 <script>
+import PostCard from "../components/PostCard.vue";
 export default {
     name: 'PostsList',
+    components: {
+        PostCard
+    },
     data() {
         return {
             posts: [],
@@ -104,12 +100,6 @@ export default {
                     this.lastPage = resp.data.results.last_page;
                 });
         },
-        ellipsis(text, maxChar) {
-            if (text.length > maxChar) {
-                return text.substr(0, maxChar) + ' ...';
-            }
-            return text;
-        }
     },
 }
 </script>
