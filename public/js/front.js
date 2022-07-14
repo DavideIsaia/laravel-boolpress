@@ -2114,10 +2114,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_PostCard_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/PostCard.vue */ "./resources/js/components/PostCard.vue");
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "SingleTag",
   components: {
-    PostCard: PostCard
+    PostCard: _components_PostCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
     return {
@@ -2604,7 +2606,7 @@ var render = function render() {
     }, [_vm._v("\r\n            " + _vm._s(tag.name) + "\r\n          ")]);
   }), 1)]), _vm._v(" "), _c("p", {
     staticClass: "mt-2"
-  }, [_vm._v(_vm._s(_vm.post.content))])]) : _c("section", [_vm._v("Caricamento...")])]);
+  }, [_vm._v(_vm._s(_vm.post.content))])]) : _c("section", [_c("h2", [_vm._v("Caricamento...")])])]);
 };
 
 var staticRenderFns = [];
@@ -2643,7 +2645,7 @@ var render = function render() {
         post: post
       }
     })], 1);
-  }), 0)]) : _c("section", [_vm._v("Caricamento...")])]);
+  }), 0)]) : _c("section", [_c("h2", [_vm._v("Caricamento...")])])]);
 };
 
 var staticRenderFns = [];

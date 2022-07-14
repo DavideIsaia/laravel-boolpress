@@ -12,11 +12,12 @@
         </div>
       </div>
     </section> 
-    <section v-else>Caricamento...</section> 
+    <section v-else><h2>Caricamento...</h2></section> 
   </div>
 </template>
 
 <script>
+import PostCard from "../components/PostCard.vue";
 export default {
   name: "SingleTag",
   components: {

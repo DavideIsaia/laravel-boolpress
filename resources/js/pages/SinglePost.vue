@@ -17,7 +17,7 @@
       </ul>
       <p class="mt-2">{{ post.content }}</p>  
     </section> 
-    <section v-else>Caricamento...</section> 
+    <section v-else><h2>Caricamento...</h2></section> 
   </div>
 </template>
 
