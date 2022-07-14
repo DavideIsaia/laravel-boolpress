@@ -8,6 +8,15 @@ use App\Tag;
 
 class TagController extends Controller
 {
+    public function index()
+    {
+        $tags = Tag::all();
+        return response()->json([
+            'success' => true,
+            'results' => $tags
+        ]);
+    }
+
     public function show($slug) {
         $tag = Tag::where('slug', '=', $slug)->with(['posts'])->first();
         if ($tag) {

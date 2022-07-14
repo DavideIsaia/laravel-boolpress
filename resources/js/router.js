@@ -5,6 +5,7 @@ Vue.use(VueRouter);
 
 import Home from "./pages/Home.vue";
 import Blog from "./pages/Blog.vue";
+import Tags from "./pages/Tags.vue";
 import SinglePost from "./pages/SinglePost.vue"; // ricorda di riavviare npm run watch se non vedi niente
 import SingleTag from "./pages/SingleTag.vue";
 import About from "./pages/About.vue";
@@ -22,6 +23,11 @@ const router = new VueRouter({
       path: "/blog",
       name: "blog",
       component: Blog
+    },
+    {
+      path: "/tags",
+      name: "tags",
+      component: Tags
     },
     {
       path: "/blog/:slug",

@@ -1,8 +1,11 @@
 <template>
   <div class="container">
-    <section v-if="tag">    
+    <section v-if="tag">
+      <router-link :to="{ name: 'tags' }">
+        <h5 class="mt-3">Vai alla lista dei tags</h5>
+      </router-link>    
       <h1 class="mt-4">Tag: {{ tag.name }}</h1>
-      <h4>Post con questo tag:</h4>
+      <h4>Post con questo tag</h4>
       <div class="row row-cols-4">
         <div v-for="post in tag.posts"
               :key="post.id"

@@ -23,6 +23,9 @@
               <router-link class="nav-link" :to="{name: 'blog'}">Blog delle ricette</router-link>
             </li>
             <li class="nav-item">
+              <router-link class="nav-link" :to="{ name: 'tags' }">Tags</router-link>
+            </li>
+            <li class="nav-item">
               <router-link class="nav-link" :to="{name: 'about'}">Chi siamo</router-link>
             </li>
             <li class="nav-item">
