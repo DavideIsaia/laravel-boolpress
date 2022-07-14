@@ -4,11 +4,15 @@
       <h1 class="mt-4">{{ post.title }}</h1>
       <h6><strong>Categoria: {{ category }}</strong></h6>
       <ul>
-        <li v-for="tag in post.tags"
-              :key="tag.id"
-              class="badge rounded-pill bg-success mr-2 d-inline-block"
-            >
+        <li>
+          <router-link
+            :to="{ name: 'single-tag', params: {slug: tag.slug } }" 
+            v-for="tag in post.tags"
+            :key="tag.id"
+            class="badge rounded-pill bg-success mr-2 d-inline-block"
+          >
             {{ tag.name }}
+          </router-link>
         </li>
       </ul>
       <p class="mt-2">{{ post.content }}</p>  
