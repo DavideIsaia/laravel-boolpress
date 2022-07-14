@@ -1909,7 +1909,24 @@ module.exports = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Header"
+  name: "Header",
+  data: function data() {
+    return {
+      menuLinks: [{
+        name: "home",
+        title: "Home"
+      }, {
+        name: "blog",
+        title: "Blog delle ricette"
+      }, {
+        name: "tags",
+        title: "Tags"
+      }, {
+        name: "about",
+        title: "Chi Siamo"
+      }]
+    };
+  }
 });
 
 /***/ }),
@@ -2253,43 +2270,19 @@ var render = function render() {
     }
   }, [_c("ul", {
     staticClass: "navbar-nav"
-  }, [_c("li", {
-    staticClass: "nav-item"
-  }, [_c("router-link", {
-    staticClass: "nav-link",
-    attrs: {
-      to: {
-        name: "home"
+  }, [_vm._l(_vm.menuLinks, function (link, index) {
+    return _c("li", {
+      key: index,
+      staticClass: "nav-item"
+    }, [_c("router-link", {
+      staticClass: "nav-link",
+      attrs: {
+        to: {
+          name: link.name
+        }
       }
-    }
-  }, [_vm._v("Home")])], 1), _vm._v(" "), _c("li", {
-    staticClass: "nav-item"
-  }, [_c("router-link", {
-    staticClass: "nav-link",
-    attrs: {
-      to: {
-        name: "blog"
-      }
-    }
-  }, [_vm._v("Blog delle ricette")])], 1), _vm._v(" "), _c("li", {
-    staticClass: "nav-item"
-  }, [_c("router-link", {
-    staticClass: "nav-link",
-    attrs: {
-      to: {
-        name: "tags"
-      }
-    }
-  }, [_vm._v("Tags")])], 1), _vm._v(" "), _c("li", {
-    staticClass: "nav-item"
-  }, [_c("router-link", {
-    staticClass: "nav-link",
-    attrs: {
-      to: {
-        name: "about"
-      }
-    }
-  }, [_vm._v("Chi siamo")])], 1), _vm._v(" "), _vm._m(1)])])])])]);
+    }, [_vm._v(_vm._s(link.title))])], 1);
+  }), _vm._v(" "), _vm._m(1)], 2)])])])]);
 };
 
 var staticRenderFns = [function () {
