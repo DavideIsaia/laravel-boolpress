@@ -2337,7 +2337,13 @@ var render = function render() {
 
   return _c("div", {
     staticClass: "card mt-2 mb-2"
-  }, [_c("div", {
+  }, [_vm.post.thumb ? _c("img", {
+    staticClass: "card-img-top",
+    attrs: {
+      src: _vm.post.thumb,
+      alt: ""
+    }
+  }) : _vm._e(), _vm._v(" "), _c("div", {
     staticClass: "card-body"
   }, [_c("h4", {
     staticClass: "card-title"
@@ -2697,7 +2703,12 @@ var render = function render() {
         }
       }
     }, [_vm._v("\r\n            " + _vm._s(tag.name) + "\r\n          ")]);
-  }), 1)]), _vm._v(" "), _c("p", {
+  }), 1)]), _vm._v(" "), _vm.post.thumb ? _c("div", [_c("img", {
+    attrs: {
+      src: _vm.post.thumb,
+      alt: ""
+    }
+  })]) : _vm._e(), _vm._v(" "), _c("p", {
     staticClass: "mt-2"
   }, [_vm._v(_vm._s(_vm.post.content))])]) : _c("section", [_c("h2", [_vm._v("Caricamento...")])])]);
 };

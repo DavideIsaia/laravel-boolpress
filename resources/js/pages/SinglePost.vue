@@ -15,6 +15,9 @@
           </router-link>
         </li>
       </ul>
+      <div v-if="post.thumb">
+        <img :src="post.thumb" alt=""/>
+      </div>
       <p class="mt-2">{{ post.content }}</p>  
     </section> 
     <section v-else><h2>Caricamento...</h2></section> 

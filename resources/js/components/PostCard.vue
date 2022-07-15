@@ -1,5 +1,6 @@
 <template>
   <div class="card mt-2 mb-2">
+    <img v-if="post.thumb" class="card-img-top" :src="post.thumb" alt=""/>
     <div class="card-body">
       <h4 class="card-title">{{ post.title }}</h4>
       <h6><strong>Categoria: {{ category }}</strong></h6>
