@@ -7,6 +7,7 @@ use App\Post;
 use App\Tag;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -44,6 +45,10 @@ class PostController extends Controller
     {
         $request->validate($this->getValidationRules());
         $data = $request->all();
+
+        $image_path = Storage::put('uploads', $data['image']);
+        $data['thumb'] = $image_path;
+
         $post = new Post();
         $post->fill($data);
 
