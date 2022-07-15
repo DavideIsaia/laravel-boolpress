@@ -53,9 +53,9 @@
     <textarea type="text" class="form-control" name="content" id="content" rows='10'> {{ old('content') }} </textarea>
   </div>
 
-  <div class="form-group">
+  <div class="mb-3">
     <label for="image">Immagine</label>
-    <input type="file" class="form-control" name="image" id="image">
+    <input type="file" name="image" id="image">
   </div>
 
   <button type="submit" class="btn btn-primary">Crea</button>

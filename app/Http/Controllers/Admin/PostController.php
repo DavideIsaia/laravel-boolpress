@@ -46,8 +46,11 @@ class PostController extends Controller
         $request->validate($this->getValidationRules());
         $data = $request->all();
 
-        $image_path = Storage::put('uploads', $data['image']);
-        $data['thumb'] = $image_path;
+        if (isset($data['image'])) {
+            $image_path = Storage::put('uploads', $data['image']);
+            dd($image_path);
+            $data['thumb'] = $image_path;
+        }
 
         $post = new Post();
         $post->fill($data);
@@ -150,7 +153,8 @@ class PostController extends Controller
             'title' => 'required|max:255',
             'content' => 'required|max:30000',
             'category_id' => 'nullable|exists:categories,id',
-            'tags' => 'exists:tags,id'
+            'tags' => 'nullable|exists:tags,id',
+            'image' => 'nullable|image|max:2048'
         ];
     }
 }

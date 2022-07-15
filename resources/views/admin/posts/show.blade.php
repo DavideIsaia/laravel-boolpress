@@ -12,6 +12,9 @@
       nessun tag associato
   @endforelse
 </h6>
+@if ($post->thumb)
+  <img src="{{ asset('storage/' . $post->thumb) }}" alt="{{ $post->title }}">  
+@endif
 <p>{{ $post->content }}</p>
 
 <a href="{{ route('admin.posts.edit', ['post' => $post->id])}}" class="btn btn-primary">Modifica</a>

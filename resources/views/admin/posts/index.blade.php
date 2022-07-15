@@ -6,6 +6,9 @@
   @foreach ($posts as $post)
     <div class="col">
       <div class="card mb-4">
+        @if ($post->thumb)
+          <img class="card-img-top" src="{{ asset('storage/' . $post->thumb) }}" alt="{{ $post->title }}">  
+        @endif
         <div class="card-body">
           <h5 class="card-title">{{ $post->title }}</h5>
           @if (isset($post->category->name))
