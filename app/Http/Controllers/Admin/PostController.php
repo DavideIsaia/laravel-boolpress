@@ -48,7 +48,6 @@ class PostController extends Controller
 
         if (isset($data['image'])) {
             $image_path = Storage::put('uploads', $data['image']);
-            dd($image_path);
             $data['thumb'] = $image_path;
         }
 
@@ -107,6 +106,13 @@ class PostController extends Controller
         $data = $request->all();
 
         $post = Post::findOrFail($id);
+        if (isset($data['image'])) {
+            if ($post->thumb) {
+                Storage::delete($post->thumb);
+            }
+            $image_path = Storage::put('uploads', $data['image']);
+            $data['thumb'] = $image_path;
+        }
         $post->fill($data);
         $post->slug = $this->generateSlugFromTitle($post->title);
         $post->save();
@@ -131,6 +137,11 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
         $post->tags()->sync([]);
+
+        if ($post->thumb) {
+            Storage::delete($post->thumb);
+        }
+
         $post->delete();
         return redirect()->route('admin.posts.index');
     }
@@ -154,7 +165,7 @@ class PostController extends Controller
             'content' => 'required|max:30000',
             'category_id' => 'nullable|exists:categories,id',
             'tags' => 'nullable|exists:tags,id',
-            'image' => 'nullable|image|max:2048'
+            'image' => 'mimes:jpeg,png,jpg,gif,svg|max:2048'
         ];
     }
 }
