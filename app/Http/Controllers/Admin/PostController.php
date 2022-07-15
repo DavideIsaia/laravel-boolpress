@@ -6,7 +6,9 @@ use App\Category;
 use App\Post;
 use App\Tag;
 use App\Http\Controllers\Controller;
+use App\Mail\NewPostNotificationToAdmin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -60,6 +62,8 @@ class PostController extends Controller
         if (isset($data['tags'])) {
             $post->tags()->sync($data['tags']);
         }
+
+        Mail::to('admin@boolpress.it')->send(new NewPostNotificationToAdmin());
 
         return redirect()->route('admin.posts.show', ['slug' =>$post->slug]);
     }
