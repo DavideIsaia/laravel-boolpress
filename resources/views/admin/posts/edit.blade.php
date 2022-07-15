@@ -52,6 +52,17 @@
     <label for="content">Contenuto</label>
     <textarea type="text" class="form-control" id="content" name='content' rows='10'>{{ old('content') ? old('content') : $post->content }}</textarea>
   </div>
+
+  <div class="mb-3">
+    <label for="image">Immagine</label>
+    <input type="file" id="image" name="image">
+
+    @if ($post->thumb)
+        <h5>Immagine attuale</h5>
+        <img src="{{ asset('storage/' . $post->thumb) }}" alt="">
+    @endif
+</div>
+
   <button type="submit" class="btn btn-primary">Conferma Modifiche</button>
 </form>
 @endsection
