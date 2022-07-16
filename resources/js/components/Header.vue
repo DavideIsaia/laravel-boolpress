@@ -20,7 +20,9 @@
               v-for="(link, index) in menuLinks"
               :key="index"
             >
-              <router-link class="nav-link" :to="{name: link.name }">{{ link.title }}</router-link>
+              <router-link class="nav-link" :to="{name: link.name }">
+                {{ link.title }}
+              </router-link>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/login">Login</a>
@@ -53,6 +55,10 @@ export default {
         {
           name: "about",
           title: "Chi Siamo"
+        },
+        {
+          name: "contacts",
+          title: "Contattaci"
         }
       ]
     }
